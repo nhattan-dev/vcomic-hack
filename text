@@ -1,0 +1,56 @@
+document.getElementById('signin_form').submit();
+
+rg2jvdsqjv7w6tpt81emdfszfy
+
+
+
+1. generate a string with 26 characters then set it as value for PHPSESSID (COOKIE)
+2. go to https://vcomic.net/account/login page then set value for email, password then run document.getElementById('signin_form').submit();
+3. 
+
+curl --location --request POST 'https://vcomic.net/controllers/cont.userForm.php?action=login&token=4385dddf5f33c941dd4157e25c8c6e6e' \
+--header 'Cookie: PHPSESSID=xykyrgdcqt6i31n2pppe53ho8p' \
+--form 'email="ltwnhattan+2@gmail.com"' \
+--form 'password="0502ngocty"' \
+--form 'isRemember="on"'
+
+{
+    "url": "../controllers/cont.userForm.php?action=login&token=fe7b167e68c709163851f2d927036632",
+    "data": [
+        {
+            "name": "email",
+            "value": "ltwnhattan+2@gmail.com"
+        },
+        {
+            "name": "password",
+            "value": "0502ngocty"
+        },
+        {
+            "name": "isRemember",
+            "value": "on"
+        }
+    ],
+    "type": "post",
+    "dataType": "text"
+}
+
+$(document).ready(function(e) {
+    $('#signin_form').on('submit', (e) => {
+        e.preventDefault();
+        $.ajax({
+            url: $('#signin_form').attr('action'),
+            data: $('#signin_form').serializeArray(),
+            type: $('#signin_form').attr('method') || 'GET',
+            dataType: 'text',
+            beforSend: () => {
+                $('#signin_output').html("<div id='spinningSquaresG'><div id='spinningSquaresG_1' class='spinningSquaresG'></div><div id='spinningSquaresG_2' class='spinningSquaresG'></div><div id='spinningSquaresG_3' class='spinningSquaresG'></div><div id='spinningSquaresG_4' class='spinningSquaresG'></div><div id='spinningSquaresG_5' class='spinningSquaresG'></div><div id='spinningSquaresG_6' class='spinningSquaresG'></div><div id='spinningSquaresG_7' class='spinningSquaresG'></div><div id='spinningSquaresG_8' class='spinningSquaresG'></div></div>")
+            },
+            success: (data) => {
+                $('#signin_output').html(data);
+                if (data == '...') {
+                    window.location.href='index';
+                }
+            }
+        });
+    });
+});
