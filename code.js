@@ -56,5 +56,8 @@ const onSubmit = async () => {
   await axios.request({
     url: "google.com",
     method: "GET",
+    headers: {
+      PHPSESSID: "bfnkm5dou5rijo0ek5gpnnn3el",
+    },
   });
 };
