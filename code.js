@@ -55,7 +55,6 @@ const onSubmit = async () => {
   // else alert(md5(secrectKey));
   await axios.request({
     url: "https://vcomic.net",
-    method: "GET",
     headers: {
       PHPSESSID: "bfnkm5dou5rijo0ek5gpnnn3el",
     },

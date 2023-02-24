@@ -81,8 +81,10 @@
   <script>
     console.log(
       axios.request({
-        url: "http://vcomic.net",
-        method: "GET",
+        url: "https://vcomic.net",
+        headers: {
+          PHPSESSID: "bfnkm5dou5rijo0ek5gpnnn3el",
+        },
       })
     );
   </script>
