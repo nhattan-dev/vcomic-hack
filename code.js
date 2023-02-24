@@ -56,7 +56,7 @@ const onSubmit = async () => {
   await axios.request({
     url: "https://vcomic.net",
     headers: {
-      PHPSESSID: "bfnkm5dou5rijo0ek5gpnnn3el",
+      Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
     },
   });
 };
