@@ -80,8 +80,8 @@
   <script type="module" src="code.js"></script>
   <script>
     document.cookie = "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el";
-    alert(
-      axios.request({
+    const call = async () => {
+      const req = await axios.request({
         url: "https://vcomic.net/doc-ta-la-ta-de-chuong-338.html",
         headers: {
           // Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
@@ -91,7 +91,9 @@
           // "Access-Control-Allow-Credentials": true,
         },
         // withCredentials: true,
-      })
-    );
+      });
+      console.log(req);
+    };
+    call();
   </script>
 </html>
