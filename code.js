@@ -44,6 +44,8 @@ const constants = {
 
 // import * as md5 from "./node_modules/md5/md5.js";
 
+import { VComic } from "./test.js";
+
 const onSubmit = async () => {
   // const email = document.getElementById(constants.EMAIL).value;
   // const password = document.getElementById(constants.PASSWORD).value;
@@ -53,19 +55,20 @@ const onSubmit = async () => {
   // const secrectKey = email + "_" + password;
   // if (secrectKey === "vcomic_nhattan") alert(secrectKey);
   // else alert(md5(secrectKey));
-  const call = async () => {
-    const req = await axios.request({
-      url: "https://vcomic.net/doc-ta-la-ta-de-chuong-338.html",
-      headers: {
-        // Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
-        // "Access-Control-Allow-Origin": "*",
-        // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-        // "Access-Control-Allow-Headers": "Content-Type",
-        // "Access-Control-Allow-Credentials": true,
-      },
-      // withCredentials: true,
-    });
-    console.log(req);
-  };
-  call();
+  // const call = async () => {
+  //   const req = await axios.request({
+  //     url: "https://vcomic.net/doc-ta-la-ta-de-chuong-338.html",
+  //     headers: {
+  //       // Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
+  //       // "Access-Control-Allow-Origin": "*",
+  //       // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+  //       // "Access-Control-Allow-Headers": "Content-Type",
+  //       // "Access-Control-Allow-Credentials": true,
+  //     },
+  //     // withCredentials: true,
+  //   });
+  //   console.log(req);
+  // };
+  // call();
+  VComic(3);
 };
