@@ -66,9 +66,9 @@ const getPointConfig = (cookie, data) => ({
 const getTokenConfig = (PHPSESSID) => ({
   method: "get",
   url: "https://vcomic.net/account/login",
-  headers: {
-    Cookie: `PHPSESSID=${PHPSESSID}`,
-  },
+  // headers: {
+  //   Cookie: `PHPSESSID=${PHPSESSID}`,
+  // },
 });
 
 const getLoginConfig = (token, PHPSESSID, data) => ({
@@ -114,9 +114,11 @@ const VComic = async (comicId) => {
   try {
     const PHPSESSID = PHPSESSIDGenerator(26);
 
+    console.log("PHPSESSID", PHPSESSID);
     const htmlString = await (
       await axios.request(getTokenConfig(PHPSESSID))
     ).data;
+    console.log("htmlString", htmlString);
 
     const token = getToken(htmlString);
     const data = getLoginForm();
@@ -126,17 +128,14 @@ const VComic = async (comicId) => {
     ).data;
 
     if (activateSessionResponse === "...") {
-      console.log("PHPSESSID", PHPSESSID);
-      const cookie = `PHPSESSID=${PHPSESSID}`;
-
-      const chapters = await (
-        await axios.request(getChapterConfig(cookie, comicId))
-      ).data.chapters;
-      console.log(chapters);
+      // const cookie = `PHPSESSID=${PHPSESSID}`;
+      // const chapters = await (
+      //   await axios.request(getChapterConfig(cookie, comicId))
+      // ).data.chapters;
+      // console.log(chapters);
       // chapters.forEach(async ({ url, chapterId }) => {
       //   try {
       //     await axios.request(readChapterConfig(cookie, url));
-
       //     const response = await axios.request(
       //       // this one can get from updateChapter endpoint
       //       getPointConfig(
@@ -144,7 +143,6 @@ const VComic = async (comicId) => {
       //         `chapterId=${chapterId}&levelToken=dc6f955c58`
       //       )
       //     );
-
       //     if (response.data["success"]) {
       //       console.log(++count);
       //     }
