@@ -66,9 +66,10 @@ const getPointConfig = (cookie, data) => ({
 const getTokenConfig = (PHPSESSID) => ({
   method: "get",
   url: "https://vcomic.net/account/login",
-  // headers: {
-  //   Cookie: `PHPSESSID=${PHPSESSID}`,
-  // },
+  headers: {
+    Cookie: `PHPSESSID=${PHPSESSID}`,
+    "Access-Control-Allow-Origin": "*",
+  },
 });
 
 const getLoginConfig = (token, PHPSESSID, data) => ({
