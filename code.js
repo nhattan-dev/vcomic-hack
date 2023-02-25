@@ -128,7 +128,7 @@ const VComic = async (comicId) => {
     ).data;
 
     if (activateSessionResponse === "...") {
-      console.log("successfully")
+      console.log("successfully");
       // const cookie = `PHPSESSID=${PHPSESSID}`;
       // const chapters = await (
       //   await axios.request(getChapterConfig(cookie, comicId))
