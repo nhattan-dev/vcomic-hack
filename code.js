@@ -63,22 +63,16 @@ const getPointConfig = (cookie, data) => ({
   data,
 });
 
-const getTokenConfig = (PHPSESSID) => ({
+const getTokenConfig = (headers) => ({
   method: "get",
   url: "https://vcomic.net/account/login",
-  headers: {
-    Cookie: `PHPSESSID=${PHPSESSID}`,
-    "Access-Control-Allow-Origin": "*",
-  },
+  headers,
 });
 
-const getLoginConfig = (token, PHPSESSID, data) => ({
+const getLoginConfig = (token, headers, data) => ({
   method: "post",
   url: `https://vcomic.net/controllers/cont.userForm.php?action=login&token=${token}`,
-  headers: {
-    Cookie: `PHPSESSID=${PHPSESSID}`,
-    // ...data.getHeaders(),
-  },
+  headers,
   data,
 });
 
@@ -109,15 +103,23 @@ const getLoginForm = () => {
   return data;
 };
 
+const getHeaders = (PHPSESSID) => {
+  const headers = new Headers();
+  headers.append("Cookie", `PHPSESSID=${PHPSESSID}`);
+  return headers;
+};
+
 let count = 0;
 
 const VComic = async (comicId) => {
   try {
     const PHPSESSID = PHPSESSIDGenerator(26);
 
-    console.log("PHPSESSID", PHPSESSID);
+    const headers = getHeaders(PHPSESSID);
+
+    console.log("getHeaders", getHeaders);
     const htmlString = await (
-      await axios.request(getTokenConfig(PHPSESSID))
+      await axios.request(getTokenConfig(headers))
     ).data;
     console.log("htmlString", htmlString);
 
@@ -125,7 +127,7 @@ const VComic = async (comicId) => {
     const data = getLoginForm();
 
     const activateSessionResponse = await (
-      await axios.request(getLoginConfig(token, PHPSESSID, data))
+      await axios.request(getLoginConfig(token, headers, data))
     ).data;
 
     if (activateSessionResponse === "...") {
