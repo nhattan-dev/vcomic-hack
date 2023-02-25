@@ -60,26 +60,26 @@ export const VComic = async (comicId) => {
         await axios.request(getChapterConfig(cookie, comicId))
       ).data.chapters;
       console.log(chapters);
-      // chapters.forEach(async ({ url, chapterId }) => {
-      //   try {
-      //     await axios.request(readChapterConfig(cookie, url));
+      chapters.forEach(async ({ url, chapterId }) => {
+        try {
+          await axios.request(readChapterConfig(cookie, url));
 
-      //     const response = await axios.request(
-      //       // this one can get from updateChapter endpoint
-      //       getPointConfig(
-      //         cookie,
-      //         `chapterId=${chapterId}&levelToken=dc6f955c58`
-      //       )
-      //     );
+          const response = await axios.request(
+            // this one can get from updateChapter endpoint
+            getPointConfig(
+              cookie,
+              `chapterId=${chapterId}&levelToken=dc6f955c58`
+            )
+          );
 
-      //     if (response.data["success"]) {
-      //       console.log(++count);
-      //     }
-      //   } catch (error) {
-      //     // console.log(error);
-      //     return;
-      //   }
-      // });
+          if (response.data["success"]) {
+            console.log(++count);
+          }
+        } catch (error) {
+          // console.log(error);
+          return;
+        }
+      });
     } else {
       console.log("failed to activate session");
     }
