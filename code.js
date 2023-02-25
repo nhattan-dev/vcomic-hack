@@ -65,7 +65,8 @@ const getPointConfig = (cookie, data) => ({
 
 const getTokenConfig = (headers) => ({
   method: "get",
-  url: "https://vcomic.net/account/login",
+  // url: "https://vcomic.net/account/login",
+  url: "https://vcomic.net/index.html",
   headers,
 });
 
