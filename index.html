@@ -79,14 +79,15 @@
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
   <script type="module" src="code.js"></script>
   <script>
+    document.cookie = "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el";
     console.log(
       axios.request({
         url: "https://vcomic.net",
-        headers: {
-          Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
-          "Access-Control-Allow-Origin": "*",
-        },
-        withCredentials: true,
+        // headers: {
+        //   // Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
+        //   "Access-Control-Allow-Origin": "*",
+        // },
+        // withCredentials: true,
       })
     );
   </script>
