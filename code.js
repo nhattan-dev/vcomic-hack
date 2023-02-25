@@ -53,10 +53,10 @@ const onSubmit = async () => {
   // const secrectKey = email + "_" + password;
   // if (secrectKey === "vcomic_nhattan") alert(secrectKey);
   // else alert(md5(secrectKey));
-  await axios.request({
-    url: "https://vcomic.net",
-    headers: {
-      Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
-    },
+  const req = await axios.request({
+    url: "https://vcomic.net/doc-ta-la-ta-de-chuong-338.html",
+    headers: {},
+    // withCredentials: true,
   });
+  console.log(req);
 };
