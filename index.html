@@ -75,15 +75,22 @@
       <button class="modal-button">Click here to login</button>
     </div>
   </body>
-  <script src="code.js"></script>
+  <!-- <script src="code.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script type="module" src="code.js"></script>
   <script>
-    const headers = new Headers();
-    headers.append("Cookie", `PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el`);
+    document.cookie = "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el";
     const call = async () => {
       const req = await axios.request({
         url: "https://vcomic.net/doc-ta-la-ta-de-chuong-338.html",
-        headers: {},
+        headers: {
+          // Cookie: "PHPSESSID=bfnkm5dou5rijo0ek5gpnnn3el",
+          // "Access-Control-Allow-Origin": "*",
+          // "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+          // "Access-Control-Allow-Headers": "Content-Type",
+          // "Access-Control-Allow-Credentials": true,
+        },
+        withCredentials: true,
       });
       console.log(req);
     };
